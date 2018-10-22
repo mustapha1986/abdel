@@ -1,0 +1,53 @@
+{% extends 'PXEasypackBundle::layout.html.twig' %}
+
+
+{% block title %}
+Nouveau Configuration - {{ parent() }}
+{% endblock %}
+
+{% block easypack_block %}
+    {{ include("PXEasypackBundle:clientHasCarrier:form.html.twig") }}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            jQuery(document).ready(function() {
+                console.log("jQuery est prêt !");
+                var html = '';
+
+                $(".carrierClass").change(function() {
+                    mafonctionchange('carrier');;
+                });
+
+                function mafonctionchange(selecteur)
+                {
+                    $.ajax({
+                        url: '{{ path('px_easypack_clientHasCarrier_list') }}',
+                        type: 'POST',
+                        data:
+                            {
+                                id : $("select."+selecteur+"Class option:selected").val(),
+
+                            },
+                        dataType: 'json',
+                        success: function(reponse) {
+
+                            html = '';
+                            $.each(reponse, function(index, value) {
+                                html +="<label>"+index+"</label> : "+ value +'<br>';
+                            });
+
+                            $(".config").html(html);
+
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+{% endblock %}

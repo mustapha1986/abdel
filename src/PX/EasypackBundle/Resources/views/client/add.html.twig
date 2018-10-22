@@ -1,0 +1,10 @@
+{% extends 'PXEasypackBundle::layout.html.twig' %}
+
+
+{% block title %}
+Nouveau client - {{ parent() }}
+{% endblock %}
+
+{% block easypack_block %}
+    {{ include("PXEasypackBundle:client:form.html.twig") }}
+{% endblock %}

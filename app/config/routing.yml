@@ -1,0 +1,7 @@
+px_easypack:
+    resource: "@PXEasypackBundle/Resources/config/routing.yml"
+    prefix:   /administration
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

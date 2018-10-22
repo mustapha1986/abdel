@@ -1,0 +1,46 @@
+px_easypack_homepage:
+    path:     /
+    defaults: { _controller: PXEasypackBundle:Default:index }
+
+
+#Client ################"
+px_easypack_client_list:
+    path:     /clients
+    defaults: { _controller: PXEasypackBundle:Client:list }
+
+px_easypack_client_view:
+    path:     /client/{id}
+    defaults:  { _controller: PXEasypackBundle:Client:view }
+    requirements:
+        id: \d+
+
+
+px_easypack_client_edit:
+    path:     /client/{id}
+    defaults:  { _controller: PXEasypackBundle:Client:edit}
+    requirements:
+        id: \d+
+
+px_easypack_client_delete:
+    path:     /client/{id}
+    defaults:  { _controller: PXEasypackBundle:Client:delete}
+    requirements:
+        id: \d+
+
+px_easypack_client_add:
+    path:     /add_client
+    defaults: { _controller: PXEasypackBundle:Client:add }
+####################
+
+# Client_carrier
+px_easypack_clientHasCarrier_add:
+    path:     /add_clientCarrier
+    defaults: { _controller: PXEasypackBundle:ClientHasCarrier:add }
+
+px_easypack_clientHasCarrier_view:
+    path:     /clientCarrier
+    defaults: { _controller: PXEasypackBundle:ClientHasCarrier:view }
+
+px_easypack_clientHasCarrier_list:
+    path:     /list_client_arrier
+    defaults: { _controller: PXEasypackBundle:ClientHasCarrier:list }

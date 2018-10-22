@@ -1,0 +1,29 @@
+{% extends 'PXEasypackBundle::layout.html.twig' %}
+
+
+{% block title %}
+{{ client.name }} - {{ parent() }}
+{% endblock %}
+
+{% block easypack_block %}
+
+    <div class="well">
+        {{ client.name }}
+    </div>
+
+    <p>
+        <a href="{{ path('px_easypack_client_list') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+
+        <a href="{{ path('px_easypack_client_edit', {'id': client.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier le client
+        </a>
+        <a href="{{ path('px_easypack_client_delete', {'id': client.id}) }}" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+            Supprimer le client
+        </a>
+    </p>
+{% endblock %}

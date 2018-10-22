@@ -1,0 +1,4 @@
+services:
+#    px_easypack.example:
+#        class: PX\EasypackBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,42 +1,36 @@
 <?php
 
-namespace PX\EasypackBundle\Form\Carrier;
+namespace PX\EasypackBundle\Form;
 
-use PX\EasypackBundle\Entity\Carrier\Chrono;
-use PX\EasypackBundle\Form\CarrierType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ChronoType extends CarrierType
+class CarrierType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-        parent::buildForm($builder, $options);
-        $builder->add('plageNumuro3')->add('ref');
+        $builder->add('name')->add('carrierCode');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => Chrono::class
+            'data_class' => CarrierType::class
+
         ));
     }
-
-
-
 
     /**
      * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
-        return 'px_easypackbundle_carrier_chrono';
+        return 'px_easypackbundle_carrier';
     }
 
 

@@ -1,53 +1,37 @@
 {% extends 'PXEasypackBundle::layout.html.twig' %}
 
-
 {% block title %}
-Nouveau Configuration - {{ parent() }}
+    Nouveau Configuration -
 {% endblock %}
 
 {% block easypack_block %}
     {{ include("PXEasypackBundle:clientHasCarrier:form.html.twig") }}
-
-
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script>
-        $(function () {
+  <script>
             jQuery(document).ready(function() {
-                console.log("jQuery est prêt !");
-                var html = '';
-
-                $(".carrierClass").change(function() {
-                    mafonctionchange('carrier');;
+                $('#types').on('change', function () {
+                    $('.form').addClass('formhidden');
+                    $('#' + $(this).val()).removeClass('formhidden');
                 });
 
-                function mafonctionchange(selecteur)
-                {
-                    $.ajax({
-                        url: '{{ path('px_easypack_clientHasCarrier_list') }}',
-                        type: 'POST',
-                        data:
-                            {
-                                id : $("select."+selecteur+"Class option:selected").val(),
 
-                            },
-                        dataType: 'json',
-                        success: function(reponse) {
+                $('#clients').on('change', function () {
 
-                            html = '';
-                            $.each(reponse, function(index, value) {
-                                html +="<label>"+index+"</label> : "+ value +'<br>';
-                            });
+                    var id =$(this).val();
 
-                            $(".config").html(html);
+                    $('#clientId').val(id);
 
-                        }
-                    });
-                }
+                });
             });
-        });
-
     </script>
+
+    <style>
+
+        .formhidden{
+            display: none;
+        }
+    </style>
 {% endblock %}

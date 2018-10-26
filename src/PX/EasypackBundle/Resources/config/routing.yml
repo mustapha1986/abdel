@@ -44,3 +44,11 @@ px_easypack_clientHasCarrier_view:
 px_easypack_clientHasCarrier_list:
     path:     /list_client_arrier
     defaults: { _controller: PXEasypackBundle:ClientHasCarrier:list }
+
+px_easypack_clientHasCarrier_config:
+    path:     /addConfig
+    defaults: { _controller: PXEasypackBundle:Test:addConf }
+
+px_easypack_clientHasCarrier_createVehicle:
+    path:     /wizard
+    defaults: { _controller: PXEasypackBundle:Test:createVehicle }

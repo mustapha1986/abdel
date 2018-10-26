@@ -2,3 +2,19 @@ services:
 #    px_easypack.example:
 #        class: PX\EasypackBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    px_easypack.doctrine_listener.application_creation:
+        class: PX\EasypackBundle\EventListener\CarrierClientListener
+        arguments: ["@px_easypack.doctrine_listener.clientHasCarrier", "@px_easypack.doctrine_listener.client"]
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+
+    px_easypack.doctrine_listener.client:
+        class: PX\EasypackBundle\Entity\Client
+
+
+    px_easypack.doctrine_listener.clientHasCarrier:
+        class: PX\EasypackBundle\Entity\ClientHasCarrier
+
+    px_easypack.form.flow.createVehicle:
+        class: PX\EasypackBundle\Form\CreateVehicleFlow
+        parent: craue.form.flow

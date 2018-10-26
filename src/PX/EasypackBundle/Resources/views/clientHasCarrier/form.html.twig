@@ -1,10 +1,6 @@
-<h4>Nouvelle configuration</h4>
+ <input id="clientId" type="hidden" value="">
 
-<div class="well">
-    {{ form_start(form , {'attr' : {'class' : 'form-horizontal'}}) }}
-    {{ form_errors(form) }}
-
-    <div class="form-group">
+  {#  <div class="form-group">
         {{ form_label(form.client , "Nom client" , {'label_attr' : {'class' : 'col-sm-3 control-label'}}) }}
         {{ form_errors(form.client) }}
 
@@ -12,40 +8,73 @@
             {{ form_widget(form.client , {'attr' : {'class' : 'clientClass form-control'}}) }}
         </div>
     </div>
+#}
 
 
-    <div class="form-group">
-        {{ form_label(form.carrier , "Transporteur" , {'label_attr' : {'class' : 'col-sm-3 control-label'}}) }}
-        {{ form_errors(form.carrier) }}
+ <div class="well">
+     {{ form_start(formPrincipale , {'attr' : {'class' : 'form-horizontal'}}) }}
+     {{ form_errors(formPrincipale) }}
 
-        <div class="col-sm-4">
-            {{ form_widget(form.carrier , {'attr' : {'class' : 'carrierClass form-control'}}) }}
-        </div>
-    </div>
+     <div class="form-group">
+         {{ form_label(formPrincipale.client , "Nom client" , {'label_attr' : {'class' : 'col-sm-3 control-label'}}) }}
+         {{ form_errors(formPrincipale.client) }}
 
-
-    <div class="form-group">
-        {{ form_label(form.code , "Code" , {'label_attr' : {'class' : 'col-sm-3 control-label'}}) }}
-        {{ form_errors(form.code) }}
-
-        <div class="col-sm-4">
-            {{ form_widget(form.code , {'attr' : {'class' : 'carrierClass form-control'}}) }}
-        </div>
-    </div>
+         <div class="col-sm-4">
+             {{ form_widget(formPrincipale.client , {'attr' : {'class' : 'clientClass form-control'}}) }}
+         </div>
+     </div>
 
 
-    <p class="config">
 
-    </p>
-    <div class="form-group">
-        <div class="col-sm-3">
-        </div>
-        <div class="col-sm-4">
 
-            {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
-        </div>
-    </div>
 
-    {{ form_rest(form) }}
-    {{ form_end(form) }}
-</div>
+     <div class="form-group">
+         {{ form_label(formPrincipale.code , "Code" , {'label_attr' : {'class' : 'col-sm-3 control-label'}}) }}
+         {{ form_errors(formPrincipale.code) }}
+
+         <div class="col-sm-4">
+             {{ form_widget(formPrincipale.code , {'attr' : {'class' : 'carrierClass form-control'}}) }}
+         </div>
+     </div>
+
+
+     <div class="form-group">
+         <select id="types" class="col-sm-3 form-control">
+             <option selected="selected"></option>
+             {% for type in types|keys %}
+                 <option value="transporteur_type_{{ loop.index }}">{{ type }}</option>
+             {% endfor %}
+         </select>
+
+     </div>
+
+
+
+
+
+
+     {% for form in forms %}
+         <div class="form formhidden" id="transporteur_type_{{ loop.index }}">
+             {{ form_start(form) }}
+             {{ form_widget(form) }}
+             {{ form_end(form) }}
+         </div>
+     {% endfor %}
+
+
+
+     <div class="form-group">
+         <div class="col-sm-3">
+         </div>
+         <div class="col-sm-4">
+
+             {{ form_widget(formPrincipale.save, {'attr': {'class': 'btn btn-primary'}}) }}
+         </div>
+     </div>
+
+     {{ form_rest(formPrincipale) }}
+     {{ form_end(formPrincipale) }}
+ </div>
+
+
+

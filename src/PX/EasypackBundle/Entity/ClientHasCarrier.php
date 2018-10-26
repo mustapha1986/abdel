@@ -40,7 +40,7 @@ class ClientHasCarrier
 
     /**
      * @var Client
-     * @ORM\ManyToOne(targetEntity="PX\EasypackBundle\Entity\Carrier")
+     * @ORM\ManyToOne(targetEntity="PX\EasypackBundle\Entity\Carrier" , cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      *
      */
